@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для збору даних</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border: 1px solid #007BFF;
+            outline: none;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-container a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <!-- Підключення стилів для Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Підключення JavaScript для Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Підключення локалізації для української мови -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/uk.js"></script>
+
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Введіть ваші дані</h1>
+        <form action="/submit-form" method="POST">
+            <!-- Поле прізвища тепер перше -->
+            <div class="form-group">
+                <label for="lastName">Прізвище:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="firstName">Ім'я:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="middleName">По батькові:</label>
+                <input type="text" id="middleName" name="middleName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="birthDate">Дата народження:</label>
+                <input type="text" id="birthDate" name="birthDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Номер телефону:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Емейл:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Місце проживання:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <!-- Додано поле для коду карти -->
+            <div class="form-group">
+                <label for="cardCode">Код карти:</label>
+                <input type="text" id="cardCode" name="cardCode" required placeholder="Введіть код карти">
+            </div>
+
+            <button type="submit">Надіслати</button>
+        </form>
+    </div>
+
+    <script>
+        // Ініціалізація Flatpickr з українською локалізацією
+        flatpickr("#birthDate", {
+            locale: "uk"
+        });
+    </script>
+
+</body>
+</html>
